@@ -1,0 +1,40 @@
+{
+  "name": "teamflow-root",
+  "version": "1.0.0",
+  "description": "Root configuration for TeamFlow Workspace",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install && npm install --prefix server && npm install --prefix client",
+    "dev": "concurrently --kill-others-on-fail \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "db:seed": "npm run db:seed --prefix server",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "client/src/**/*.{ts,tsx}": [
+      "eslint --fix --max-warnings=0 --no-warn-ignored -c client/eslint.config.js",
+      "prettier --write"
+    ],
+    "server/src/**/*.ts": [
+      "eslint --fix --max-warnings=0 --no-warn-ignored -c server/eslint.config.js",
+      "prettier --write"
+    ],
+    "*.json": [
+      "prettier --write"
+    ],
+    "*.md": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "eslint": "^10.5.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.6",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.8.4"
+  }
+}
