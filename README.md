@@ -22,10 +22,12 @@ graph TD
 
 ```text
 teamflow/
-  client/             # React, Vite, TS, Zustand, Recharts, Tailwind CSS
-  server/             # Node.js, Express, TS, Mongoose, Socket.io
-  docker-compose.yml  # MongoDB & Redis services configuration
-  package.json        # Root scripts to run backend & frontend concurrently
+  client/             # React Frontend (Vite, TypeScript, Tailwind, Zustand)
+  server/             # Express Backend (Node.js, TypeScript, Mongoose, Socket.io)
+  shared/             # Shared Types module (reusable interfaces across frontend/backend)
+  docs/               # Architectural & Deployment documentation
+  docker-compose.yml  # Local MongoDB & Redis services configuration
+  package.json        # Root workspace configuration for monorepo concurrency
 ```
 
 ---
