@@ -19,8 +19,9 @@ export const usePresenceStore = create<PresenceState>((set, get) => ({
     // If socket is already connected, do not re-establish
     if (get().socket?.connected) return;
 
-    // Connect to same origin (Vite dev proxy forwards `/socket.io` requests to Port 5000)
-    const socket = io({
+    // Connect to specified socket server or default same origin
+    const socketUrl = import.meta.env.VITE_SOCKET_URL || undefined;
+    const socket = io(socketUrl, {
       autoConnect: true,
       withCredentials: true,
     });

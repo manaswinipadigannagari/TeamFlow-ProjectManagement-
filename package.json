@@ -4,20 +4,20 @@
   "description": "Root configuration for TeamFlow Workspace",
   "private": true,
   "scripts": {
-    "install:all": "npm install && npm install --prefix server && npm install --prefix client",
-    "dev": "concurrently --kill-others-on-fail \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
-    "db:seed": "npm run db:seed --prefix server",
+    "install:all": "npm install --legacy-peer-deps && npm install --prefix backend --legacy-peer-deps && npm install --prefix frontend --legacy-peer-deps",
+    "dev": "concurrently --kill-others-on-fail \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
+    "db:seed": "npm run db:seed --prefix backend",
     "docker:up": "docker compose up -d",
     "docker:down": "docker compose down",
     "prepare": "husky"
   },
   "lint-staged": {
-    "client/src/**/*.{ts,tsx}": [
-      "eslint --fix --max-warnings=0 --no-warn-ignored -c client/eslint.config.js",
+    "frontend/src/**/*.{ts,tsx}": [
+      "eslint --fix --max-warnings=0 --no-warn-ignored -c frontend/eslint.config.js",
       "prettier --write"
     ],
-    "server/src/**/*.ts": [
-      "eslint --fix --max-warnings=0 --no-warn-ignored -c server/eslint.config.js",
+    "backend/src/**/*.ts": [
+      "eslint --fix --max-warnings=0 --no-warn-ignored -c backend/eslint.config.js",
       "prettier --write"
     ],
     "*.json": [

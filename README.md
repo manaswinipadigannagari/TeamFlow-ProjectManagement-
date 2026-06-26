@@ -22,9 +22,8 @@ graph TD
 
 ```text
 teamflow/
-  client/             # React Frontend (Vite, TypeScript, Tailwind, Zustand)
-  server/             # Express Backend (Node.js, TypeScript, Mongoose, Socket.io)
-  shared/             # Shared Types module (reusable interfaces across frontend/backend)
+  frontend/           # React Frontend (Vite, TypeScript, Tailwind, Zustand)
+  backend/            # Express Backend (Node.js, TypeScript, Mongoose, Socket.io)
   docs/               # Architectural & Deployment documentation
   docker-compose.yml  # Local MongoDB & Redis services configuration
   package.json        # Root workspace configuration for monorepo concurrency
@@ -48,7 +47,7 @@ _(Alternatively, ensure you have a local MongoDB instance running on port `27017
 
 ### 2. Install Dependencies
 
-Run the workspace install helper to fetch packages across the root, client, and server:
+Run the workspace install helper to fetch packages across the root, frontend, and backend:
 
 ```bash
 npm run install:all
